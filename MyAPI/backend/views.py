@@ -4,7 +4,14 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework import viewsets
 
+from rest_framework.authentication import TokenAuthentication, SessionAuthentication
+from rest_framework.permissions import IsAuthenticated
+
 class ArticleViewSet(viewsets.ViewSet):
+
+    # auth and permission for view
+    authentication_classes = (TokenAuthentication, SessionAuthentication)
+    permission_classes = (IsAuthenticated,)
 
     def get_article(self, id):
         try:
@@ -17,7 +24,7 @@ class ArticleViewSet(viewsets.ViewSet):
         articles = ArticleModel.objects.all()
         serializer = ArticleSerializer(articles, many=True)
         return Response(serializer.data)
-    
+
     def create(self, request):
         serializer = ArticleSerializer(data=request.data)
         

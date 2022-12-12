@@ -11,7 +11,7 @@ class ArticleSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
     slug = serializers.SlugField(read_only=True)
-
+    
 
 """ Data Serializer 
 class ArticleSerializer(serializers.Serializer):
