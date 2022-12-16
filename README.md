@@ -1,1 +1,1 @@
-# try.djangovue
+# Django REST Framework exmaple
